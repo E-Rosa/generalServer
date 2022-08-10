@@ -1,0 +1,14 @@
+{
+  "name": "generalserver",
+  "version": "1.0.0",
+  "description": "A server that will host all the applications I create. Used to facilitate the process of opening multiple servers when needing to use my applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elias Rosa",
+  "license": "ISC",
+  "dependencies": {
+    "tsc": "^2.0.4"
+  }
+}
