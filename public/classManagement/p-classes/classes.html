@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="../components/footer.css">
+    <link rel="stylesheet" href="../components/back-button.css">
+    <link rel="stylesheet" href="../components/student-card.css">
+    <link rel="stylesheet" href="../styles/globals.css">
+  </head>
+  <body>
+    <a class="back-button" href="http://localhost:5000/p-student/student.html"></a>
+    
+    <section class="student-card-container">
+      <span>Miguel da Silva Carneiro</span>
+      <span id="status">Status: OK</span>
+    </section>
+
+    <section class="filter-header-container">
+      <button id="all-button" class="button">all</button>
+      <button id="previous-button" class="button">previous</button>
+      <button id="next-button" class="button">next</button>
+    </section>
+
+    <section class="student-card-container" id="class-card">
+      <span>Miguel da Silva Carneiro</span>
+      <span>Class title</span>
+      <div id="date-value-container">
+        <span>04/07/2022</span>
+        <span>Progress: 1/4</span>
+      </div>
+      <span id="class-id">ID: asdu9832234nklxczxsadp0 </span>
+      <span id="status">Status: OK</span>
+    </section>
+
+    <button class="button" id="add-button">+</button>
+    
+    <footer id="main-footer">
+        <a href="http://localhost:5000/index.html" id="footer-home-button" class="footer-button"></a>
+        <a href="http://localhost:5000/p-student/student.html" id="footer-students-button" class="footer-button"></a>
+        <a href="" id="footer-classes-button" class="footer-button"></a>
+        <a href="" id="footer-schedule-button" class="footer-button"></a>
+    </footer>
+    <script>var exports = {};</script>
+	<script src="classes.js" type="module"></script>
+  </body>
+</html>

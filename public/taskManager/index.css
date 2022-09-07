@@ -1,0 +1,76 @@
+html {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: rgb(255, 233, 237);
+}
+.tasks-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  max-width:50vw;
+}
+h1 {
+  font-weight: 600;
+  border-bottom: 1px solid rgb(150, 74, 99);
+  color: rgb(150, 74, 99);
+  margin-bottom: 1rem;
+}
+.task {
+  font-weight: 300;
+  width: 100%;
+  color: rgb(109, 52, 71);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.1rem;
+
+}
+.single-task-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width:100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: rgb(212, 142, 165);
+  margin-bottom: 0.5rem;
+  color: white;
+  animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+.icon-container {
+  display: flex;
+  flex-direction: row;
+}
+.icon {
+  width: 15px;
+  height: 15px;
+  margin-left: 0.3rem;
+  cursor: pointer;
+}
+.add_button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgb(187, 97, 127);
+  color: white;
+  cursor: pointer;
+}

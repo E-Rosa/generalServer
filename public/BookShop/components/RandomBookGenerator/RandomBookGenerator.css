@@ -1,0 +1,122 @@
+.button{
+    background-color:rgb(21, 62, 82);
+    padding:2%;
+    border:1px solid white;
+    border-radius:30px;
+    color:white;
+    font-size:1em;
+    cursor:pointer;
+    transition:.2s ease-in-out all;
+}
+.RBG-container{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    border:1px solid rgb(69, 224, 134);
+    border-radius:10px;
+    padding:3%;
+    box-shadow:-10px 10px rgb(69, 224, 134);
+    max-width:80%;
+    background-color: rgb(71, 106, 122);
+    animation: popIn .2s ease-in-out;
+}
+.RBG-container *{
+    animation: popIn .2s ease-in-out;
+}
+.RBG-submit-button{
+    font-size:2em;
+    margin:2em;
+}
+.RBG-back-button{
+    align-self: flex-start; 
+    border-radius:100%;
+    position: relative;
+    border:0;
+    color:white;
+    background-color:rgb(69, 224, 134);
+    transform:scale(1.6);
+    cursor:pointer;
+    top:-10px;
+    left:-10px;
+    transition:.2s ease-in-out all;
+}
+.RBG-back-button:hover{
+    background-color:white;
+    color:rgb(69, 224, 134);
+}
+.RBG-book-image{
+    min-height:400px;
+    min-width:280px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition:.2s all ease-in-out;
+    margin-right:2vw;
+}
+.RBG-book-image:hover{
+    transform:skewX(1deg);
+}
+
+@keyframes skewIn{
+    from{transform:scale(0);transform:skewX(0deg);}
+    to{transform:scale(1);transform:skewX(5deg); }
+}
+@keyframes popIn{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+.RBG-price-tag{
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    background-color:rgb(69, 224, 134);
+    position:relative;
+    left:-5px;
+    top:-5px;
+    padding:10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    animation-fill-mode: forwards;
+    animation:popIn .2s ease-in-out;
+    transition:.2s ease-in-out all;
+    transform:skewX(5deg);
+    box-shadow:-2px 2px white;
+    cursor:pointer;
+    font-size:1.8em;
+}
+.RBG-price-tag:hover{
+    transform:skewX(0deg);
+    box-shadow:-0px 0px white;
+}
+.RBG-title{
+    margin-bottom:2vh;
+    font-size:2em;
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    transition:.2s ease-in-out all;
+}
+.RBG-title:hover{
+    transform:translate(5px, 0px)
+}
+.RBG-description{
+    margin-bottom:2vh;
+}
+
+.RBG-see-more-button{
+    background-color:rgb(21, 62, 82);
+    padding:2%;
+    border:1px solid white;
+    border-radius:30px;
+    color:white;
+    font-size:1em;
+    cursor:pointer;
+    transition:.2s ease-in-out all;
+}
+.RBG-see-more-button:hover{
+    color:rgb(21, 62, 82);
+    background-color:rgb(69, 224, 134);
+    border:1px solid rgb(21, 62, 82);
+}

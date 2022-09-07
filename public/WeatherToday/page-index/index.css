@@ -1,0 +1,46 @@
+
+body{
+    background-color: rgb(57, 57, 105);
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+#addNote-button{
+    color: rgb(57, 57, 105);
+    background-color:lightblue;
+    border-radius:100%;
+    width:40px;
+    height:40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(57, 57, 105);
+    border-style:solid;
+    cursor:pointer;
+    font-size:1.2em;
+    margin-bottom: 2vh;
+    transition: .2s ease all;
+    margin-left:2vw;
+    margin-top:2vh;
+}
+#addNote-button:hover{
+    border: 2px solid white;
+    opacity:90%;
+}
+#notes-container-index{
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    width:90%;
+    gap:2vw;
+    max-width:100vw;
+    flex-wrap:wrap;
+    margin-left:2vw;
+}
+#utilities-container{
+    display:flex;
+    align-items: center;
+    gap: 1vw;
+}

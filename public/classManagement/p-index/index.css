@@ -1,0 +1,28 @@
+:root{
+    --font-body: 1.2em;
+}
+body{
+    margin:0;
+    margin-top:5vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-height:100vh;
+    min-height:90vh;
+    font-size: var(--font-body);
+}
+#search-bar{
+    border:0;
+    border-bottom:1px solid grey;
+    font-size: var(--font-body);
+}
+#search-button{
+    background-color:grey;
+    color:white;
+    border-radius:20px;
+    padding:.5em 1em .5em 1em;
+    border:0;
+    margin-top:4vh;
+    font-size:var(--font-body)-.2em;
+}

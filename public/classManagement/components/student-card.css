@@ -1,0 +1,71 @@
+.student-card-container{
+    background-color:grey;
+    color:white;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-start;
+    flex-wrap:wrap;
+    gap:2vw;
+    padding: 1em;
+    border-radius:20px;
+    margin-bottom:1vh;
+    margin-top:1vh;
+    font-size: 1em;
+    font-family: sans-serif;
+    font-weight: bold;
+    max-width:80vw;
+    animation: fadeIn .5s ease-in-out;
+    cursor:pointer;
+}
+@keyframes fadeIn {
+    from{margin-bottom:5vh; opacity:0%;}
+    to{margin-bottom:0vw; opacity:100%;}
+}
+#status{
+    background-color:rgb(93, 214, 93);
+    border-radius:5px;
+    padding:.4em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-justify: center;
+}
+
+#payment-status{
+    background-color:rgb(93, 214, 93);
+    border-radius:10px;
+}
+
+#payment-card{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    flex-wrap:wrap;
+    background-color:grey;
+}
+#date-value-container{
+    display:flex;
+    gap:5vw;
+}
+#payment-id{
+    color:white;
+    font-weight:200;
+}
+
+#class-card{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap:1vh;
+    background-color:rgb(106, 106, 106);
+}
+#class-id{
+    font-weight: 200;
+}
+
+

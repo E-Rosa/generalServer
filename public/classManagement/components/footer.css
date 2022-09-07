@@ -1,0 +1,38 @@
+
+#main-footer{
+    position: fixed;
+    bottom:0;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-evenly;
+    padding-bottom:1vh;
+    padding-top:1.6vh;
+    width:100vw;
+    border-top:1px solid grey;
+    z-index:2;
+    background-color:white;
+}
+.footer-button{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:30px;
+    height:30px;
+}
+#footer-classes-button{
+    background-image: url('../assets/document-icon.png');
+}
+#footer-students-button{
+    background-image: url('../assets/students-icon.png');
+}
+#footer-schedule-button{
+    background-image: url('../assets/schedule-icon.png');
+}
+#footer-home-button{
+    background-image: url('../assets/find-icon.png');
+    width:26px;
+    height:26px;
+}
+
+

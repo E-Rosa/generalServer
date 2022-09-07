@@ -1,0 +1,17 @@
+body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:1vw;
+    min-height:100vh;
+    min-width:100vw;
+    margin:0;
+}
+.entry-button{
+    padding:1em;
+    background-color: grey;
+    border-radius:10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

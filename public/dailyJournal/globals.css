@@ -1,0 +1,7 @@
+body{
+    min-height:100vh;
+    min-width:100vw;
+    margin:0;
+    font-family: sans-serif;
+    background-color: rgb(57, 57, 105);
+}

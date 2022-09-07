@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="../components/footer.css">
+    <link rel="stylesheet" href="../components/back-button.css">
+    <link rel="stylesheet" href="./student.css">
+    <link rel="stylesheet" href="../styles/globals.css">
+    <link rel="stylesheet" href="../components/dropdown-menu.css">
+  </head>
+  <body>
+    
+    <main id="student-profile-container">
+      
+      <h2 class="title">Student Profile</h2>
+
+        <section class="student-info-container">
+            <b>ID: </b>
+            <span type="text" id="id-input" class="student-info-input" contenteditable="true"></span>
+            
+        </section>
+
+        <section class="student-info-container">
+          <b>Birthday: </b>
+          <span type="text" id="birthday-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+
+        <section class="student-info-container">
+          <b>Name: </b>
+          <span type="text" id="name-input" class="student-info-input" contenteditable="true"></span>
+        </section>
+
+        <section class="student-info-container">
+          <b>City: </b>
+          <span type="text" id="city-input" class="student-info-input" contenteditable="true"></span>
+        </section>
+
+        <section class="student-info-container">
+          <b>Level: </b>
+          <span type="text" id="level-input" class="student-info-input" contenteditable="true"></span>
+          <div class="dropdown-container" id="level-dropdown-container">
+            <button class="dropdown-button">Choose a Level</button>
+            <ul class="dropdown-items" id="level-dropdown-item">A1</ul>
+            <ul class="dropdown-items" id="level-dropdown-item">A2</ul>
+            <ul class="dropdown-items" id="level-dropdown-item">B1</ul>
+            <ul class="dropdown-items" id="level-dropdown-item">B2</ul>
+            <ul class="dropdown-items" id="level-dropdown-item">C1</ul>
+          </div>
+        </section>
+        
+        <section class="student-info-container">
+          <b>Subscription: </b>
+          <span type="text" id="subscription-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+
+        <section class="student-info-container">
+          <b>Frequency: </b>
+          <span type="text" id="frequency-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+
+        <section class="student-info-container">
+          <b>Description: </b>
+          <span type="text" id="description-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+
+        <section class="student-info-container">
+          <b>Teacher: </b>
+          <span type="text" id="teachername-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+        
+        <section class="student-info-container">
+          <b>Status: </b>
+          <span type="text" id="status-input" class="student-info-input" contenteditable="true"></span>
+          
+        </section>
+        <button class="button" id="submit-button">Submit</button>
+    </main>
+    <section id="button-container">
+      <button class="button" id="classes-button">Classes</button>
+      <button class="button" id="payments-button">Payments</button>
+    </section>
+    <button class="button" id="add-button">+</button>
+    
+    <footer id="main-footer">
+        <a href="http://localhost:5000/index.html" id="footer-home-button" class="footer-button"></a>
+        <a href="http://localhost:5000/p-student/student.html" id="footer-students-button" class="footer-button"></a>
+        <a href="" id="footer-classes-button" class="footer-button"></a>
+        <a href="" id="footer-schedule-button" class="footer-button"></a>
+    </footer>
+    
+  <script>var exports = {};</script>
+	<script src="student.js" type="module"></script>
+  </body>
+</html>

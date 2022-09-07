@@ -1,0 +1,13 @@
+.filter-header-container{
+    display:flex;
+    flex-direction: row;
+    gap:2vw;
+    align-items:center;
+    justify-content: center;
+    margin-top:2vh;
+    margin-bottom:2vh;
+    min-width:70vw;
+}
+.filter-header-button{
+    
+}
