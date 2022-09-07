@@ -1,0 +1,127 @@
+export class Card {
+    constructor(name, cardType, cardAttributes, power, thoughness, imgSrc, set, setImgSrc) {
+        this.name = name;
+        this.cardType = cardType;
+        this.cardAttributes = cardAttributes;
+        this.power = power;
+        this.thoughness = thoughness;
+        this.imgSrc = imgSrc;
+        this.set = set;
+        this.setImgSrc = setImgSrc;
+    }
+    display(parent) {
+        let cardContainer = document.createElement('section');
+        cardContainer.id = 'card-container';
+        parent.appendChild(cardContainer);
+        let cardHeaderContainer = document.createElement('section');
+        cardHeaderContainer.id = 'card-name-container';
+        cardContainer.appendChild(cardHeaderContainer);
+        let cardNameDOM = document.createElement('span');
+        cardNameDOM.id = 'card-name-DOM';
+        cardNameDOM.textContent = this.name;
+        cardHeaderContainer.appendChild(cardNameDOM);
+        let cardManacostContainer = document.createElement('section');
+        cardManacostContainer.id = 'card-manacost-container';
+        cardHeaderContainer.appendChild(cardManacostContainer);
+        let mana2 = this.returnManaSymbol('#E2DAD6 ', '2');
+        cardManacostContainer.appendChild(mana2);
+        let mana = this.returnManaSymbol('black', '0');
+        cardManacostContainer.appendChild(mana);
+        let cardFrame = document.createElement('div');
+        cardFrame.id = 'card-frame';
+        cardContainer.appendChild(cardFrame);
+        let cardMiddleContainer = document.createElement('section');
+        cardMiddleContainer.id = 'card-name-container';
+        cardContainer.appendChild(cardMiddleContainer);
+        let cardTypeDOM = document.createElement('span');
+        cardTypeDOM.id = 'card-name-DOM';
+        cardTypeDOM.textContent = this.cardType + ' - ' + this.cardAttributes[0] + ' ' + this.cardAttributes[1];
+        cardMiddleContainer.appendChild(cardTypeDOM);
+        let setIcon = this.returnManaSymbol('grey', 'Alpha');
+        cardMiddleContainer.appendChild(setIcon);
+        let cardTextFrame = document.createElement('div');
+        cardTextFrame.id = 'card-text-frame';
+        cardContainer.appendChild(cardTextFrame);
+        let cardPowerFrame = document.createElement('div');
+        cardPowerFrame.id = 'card-power-frame';
+        cardPowerFrame.textContent = this.power + '/' + this.thoughness;
+        cardContainer.appendChild(cardPowerFrame);
+    }
+    returnManaSymbol(color, cost) {
+        let manaSymbol = document.createElement('span');
+        manaSymbol.id = 'mana-symbol';
+        manaSymbol.style.backgroundColor = color;
+        if (cost != '0') {
+            manaSymbol.textContent = cost;
+        }
+        return manaSymbol;
+    }
+}
+;
+let cardObj = {
+    name: 'Grizzly bear',
+    cardType: 'Creature',
+    cardAttributes: ['Bear', 'God'],
+    power: 2,
+    thoughness: 2,
+    imgSrc: './assets/images/grizzly-bear.jpg',
+    set: 'Alpha',
+    setImgSrc: './assets/images/sets/alpha.png',
+    returnManaSymbol: (color, cost) => {
+        let manaSymbol = document.createElement('span');
+        manaSymbol.id = 'mana-symbol';
+        manaSymbol.style.backgroundColor = color;
+        if (cost != '0') {
+            manaSymbol.textContent = cost;
+        }
+        return manaSymbol;
+    }
+};
+let cardObj2 = {
+    name: 'Grizzly bear',
+    cardType: 'Creature',
+    cardAttributes: ['Bear', 'God'],
+    power: 2,
+    thoughness: 2,
+    imgSrc: './assets/images/grizzly-bear.jpg',
+    set: 'Alpha',
+    setImgSrc: './assets/images/sets/alpha.png',
+    display: (parent) => {
+        let cardContainer = document.createElement('section');
+        cardContainer.id = 'card-container';
+        parent.appendChild(cardContainer);
+        let cardHeaderContainer = document.createElement('section');
+        cardHeaderContainer.id = 'card-name-container';
+        cardContainer.appendChild(cardHeaderContainer);
+        let cardNameDOM = document.createElement('span');
+        cardNameDOM.id = 'card-name-DOM';
+        cardNameDOM.textContent = cardObj.name;
+        cardHeaderContainer.appendChild(cardNameDOM);
+        let cardManacostContainer = document.createElement('section');
+        cardManacostContainer.id = 'card-manacost-container';
+        cardHeaderContainer.appendChild(cardManacostContainer);
+        let mana2 = cardObj.returnManaSymbol('#E2DAD6 ', '2');
+        cardManacostContainer.appendChild(mana2);
+        let mana = cardObj.returnManaSymbol('black', '0');
+        cardManacostContainer.appendChild(mana);
+        let cardFrame = document.createElement('div');
+        cardFrame.id = 'card-frame';
+        cardContainer.appendChild(cardFrame);
+        let cardMiddleContainer = document.createElement('section');
+        cardMiddleContainer.id = 'card-name-container';
+        cardContainer.appendChild(cardMiddleContainer);
+        let cardTypeDOM = document.createElement('span');
+        cardTypeDOM.id = 'card-name-DOM';
+        cardTypeDOM.textContent = cardObj.cardType + ' - ' + cardObj.cardAttributes[0] + ' ' + cardObj.cardAttributes[1];
+        cardMiddleContainer.appendChild(cardTypeDOM);
+        let setIcon = cardObj.returnManaSymbol('grey', 'Alpha');
+        cardMiddleContainer.appendChild(setIcon);
+        let cardTextFrame = document.createElement('div');
+        cardTextFrame.id = 'card-text-frame';
+        cardContainer.appendChild(cardTextFrame);
+        let cardPowerFrame = document.createElement('div');
+        cardPowerFrame.id = 'card-power-frame';
+        cardPowerFrame.textContent = cardObj.power + '/' + cardObj.thoughness;
+        cardContainer.appendChild(cardPowerFrame);
+    },
+};

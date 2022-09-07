@@ -1,0 +1,11 @@
+.graveyard{
+    height:120px;
+    width:80px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius:5px;
+    transition:2s ease all;
+    background-color:grey;
+}

@@ -1,0 +1,15 @@
+.gamefield{
+    display:flex;
+    flex-direction: column;
+    min-width:100vw;
+    min-height:100vh;
+}
+.p1field{
+    display:flex;
+    flex-direction: column;
+    height:50%;
+    width:100%;
+}
+.handDeckGraveContainer{
+    display:flex;
+}

@@ -1,0 +1,30 @@
+.battlefield{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width:90vw;
+    background-color:rgb(179, 179, 179);
+}
+.frontRow{
+    display:flex;
+    flex-direction: row;
+    gap:20px;
+    width:100%;
+    min-height:100px;
+}
+.creaturefield{
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+}
+.landfield{
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+}
+.artifactfield{
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+}

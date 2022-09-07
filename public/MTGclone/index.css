@@ -1,0 +1,10 @@
+body{
+	background-color: lightblue;
+	display:flex;
+	flex-direction: column-reverse;
+	flex-wrap:wrap;
+}
+#hand-and-deck-container, #battlefield-and-graveyard-container{
+	display:flex;
+	gap:2vw;
+}

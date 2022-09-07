@@ -1,0 +1,92 @@
+#card-container{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content: center;
+	background-color:white;
+	border-radius: 10px;
+	min-width:180px;
+	padding:1em;
+	cursor:move;
+	animation: .2s ease-in-out slideIn;
+	position: relative;
+	transition: .1s all ease-in-out;
+}
+@keyframes popIn{
+	from{transform:scale(0)}
+	to{transform:scale(1)}
+}
+@keyframes slideIn{
+	from{left:50px; opacity:0%;}
+	to{left:0px; opacity:100%;}
+}
+
+#card-container.over{
+	border:3px dotted black;
+}
+#card-name-container{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:space-between;
+	padding:1% 2.5% 1% 2.5%;
+	border-bottom-right-radius:9px;
+	border-top-right-radius:9px;
+	border-bottom-left-radius:9px;
+	border-top-left-radius:9px;
+	box-shadow: 0px 3px #888888;
+	border:1px solid black;
+	width:100%;
+	margin-left:1vw;
+	margin-right:1vw;
+}
+#card-name-DOM{
+	margin:0;
+}
+#card-manacost-container{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+#mana-symbol{
+	width:14px;
+	height:14px;
+	border-radius:100%;
+	font-size:12px;
+	color: #424242 ;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-align: center;
+	margin-left:2px;
+	box-shadow:.5px 1.5px grey;
+}
+#card-frame{
+	width:100%;
+	border: 1px solid black;
+	margin-top:2px;
+}
+#card-text-frame{
+	width:100%;
+	border: 1px solid black;
+	margin-top:2px;
+}
+#card-power-frame{
+	padding:1px;
+	width:18%;
+	border: 1px solid black;
+	margin-top:2px;
+	position:relative;
+	align-self:flex-end;
+	top:-5.2%;
+	right:-4px;
+	border-bottom-right-radius:9px;
+	border-top-right-radius:9px;
+	border-bottom-left-radius:9px;
+	border-top-left-radius:9px;
+	background-color:white;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+}
