@@ -1,3 +1,10 @@
+import { Area } from "../Area/Area.js";
+import { Battlefield } from "../Area/Battlefield/Battlefield.js";
+import { Deck } from "../Area/Deck/Deck.js";
+import { Graveyard } from "../Area/Graveyard/Graveyard.js";
+import { Hand } from "../Area/Hand/Hand.js";
+import { None } from "../Area/None/None.js";
+
 export class Card {
   name: string;
   cardType: string;
@@ -12,6 +19,9 @@ export class Card {
   CVC: number;
   MCDOM: HTMLElement[];
   key: string;
+  currentZone: Battlefield | Hand | Deck | Graveyard |  null | Area;
+  container: HTMLElement;
+  gameZones: Area[] | null;
   constructor(
     name: string,
     cardType: string,
@@ -22,6 +32,8 @@ export class Card {
     setName: string,
     setImgSrc: string,
     MC: string[],
+    currentZone: Battlefield | Hand | Deck | Graveyard | null | Area,
+    gameZones: Area[] | null
   ) {
     this.name = name;
     this.cardType = cardType;
@@ -38,20 +50,29 @@ export class Card {
     this.CVC = MC.length;
     this.MCDOM = this.returnManaSymbolsDOM(MC);
     this.key=Math.floor(Math.random() * 100000).toString();
+    this.container= document.createElement("section");
+    this.currentZone=currentZone;
+    this.gameZones=gameZones;
   }
   display(parent: HTMLElement) {
-    let cardContainer = document.createElement("section");
-    cardContainer.id = "card-container";
-    cardContainer.draggable = true;
-    cardContainer.setAttribute(
+    while(this.container.lastChild){
+      if(this.container.firstChild){
+        this.container.removeChild(this.container.firstChild);
+      }
+    }
+    console.log('removed all children from: ', this.container);
+    this.container.id = "card-container";
+    this.container.setAttribute(
       "key",
       this.key
     );
-    parent.appendChild(cardContainer);
+    parent.appendChild(this.container);
+    this.container.draggable=true;
 
     let cardHeaderContainer = document.createElement("section");
     cardHeaderContainer.id = "card-name-container";
-    cardContainer.appendChild(cardHeaderContainer);
+    this.container.appendChild(cardHeaderContainer);
+    cardHeaderContainer.style.pointerEvents='none';
 
     let cardNameDOM = document.createElement("span");
     cardNameDOM.id = "card-name-DOM";
@@ -68,11 +89,11 @@ export class Card {
 
     let cardFrame = document.createElement("div");
     cardFrame.id = "card-frame";
-    cardContainer.appendChild(cardFrame);
+    this.container.appendChild(cardFrame);
 
     let cardMiddleContainer = document.createElement("section");
     cardMiddleContainer.id = "card-name-container";
-    cardContainer.appendChild(cardMiddleContainer);
+    this.container.appendChild(cardMiddleContainer);
 
     let cardTypeDOM = document.createElement("span");
     cardTypeDOM.id = "card-name-DOM";
@@ -89,23 +110,76 @@ export class Card {
 
     let cardTextFrame = document.createElement("div");
     cardTextFrame.id = "card-text-frame";
-    cardContainer.appendChild(cardTextFrame);
+    this.container.appendChild(cardTextFrame);
 
     let cardPowerFrame = document.createElement("div");
     cardPowerFrame.id = "card-power-frame";
     cardPowerFrame.textContent = this.power + "/" + this.thoughness;
-    cardContainer.appendChild(cardPowerFrame);
+    this.container.appendChild(cardPowerFrame);
     this.cardType != "Creature" ? (cardPowerFrame.style.opacity = "0%") : "";
+    console.log('card: ',this,'\nwas displayed');
 
-    cardContainer.addEventListener("dragstart", handleDragStart);
-    cardContainer.addEventListener("dragover", handleDragOver);
-    cardContainer.addEventListener("dragenter", handleDragEnter);
-    cardContainer.addEventListener("dragend", handleDragEnd);
-    cardContainer.addEventListener("drop", handleDrop);
+    this.container.addEventListener("dragstart", handleDragStart);
+    this.container.addEventListener("dragover", handleDragOver);
+    this.container.addEventListener("dragenter", handleDragEnter);
+    this.container.addEventListener("dragend", handleDragEnd);
+    this.container.addEventListener("drop", (e: DragEvent)=> {
+      e.preventDefault();
+      let dataTransfer = e.dataTransfer as DataTransfer;
+      let dropzone = e.target as HTMLElement;
+      let dropzoneKey = dropzone.getAttribute('key');
+      let draggedElementKey = dataTransfer.getData("text/plain");
+      let draggedElement = document.querySelector(
+        `[key="${dataTransfer.getData("text/plain")}"]`
+      ) as HTMLElement;
+
+      if(dropzone.id==='card-container'){
+        //hand array looks like [1,2,3]
+        //want to change to: [2,1,3]
+        //and then displayArray
+        //need 2 indexes
+        if(this.currentZone){
+          //1
+          let draggedCardObjIndex = this.currentZone.cardsArray.findIndex((card)=>{return card.key===draggedElementKey});
+          //0
+          let dropzoneCardObjIndex = this.currentZone.cardsArray.findIndex((card)=>{return card.key===dropzoneKey});
+          if (draggedCardObjIndex && dropzoneCardObjIndex){
+            let draggedCardObjTemp = this.currentZone.cardsArray[dropzoneCardObjIndex]; // temp = value of [0]
+            this.currentZone.cardsArray[dropzoneCardObjIndex] = this.currentZone.cardsArray[draggedCardObjIndex]; // [0] = [1]
+            // 1 1
+            this.currentZone.cardsArray[draggedCardObjIndex] = draggedCardObjTemp; // [1] = [0]
+            this.currentZone.displayArray();
+          }
+        }
+        
+        
+      } 
+    });
+    this.container.addEventListener('click', (e)=>{
+      if(this.gameZones){
+        if(this.currentZone){
+          if(this.currentZone.constructor.name === 'Hand'){
+            //console.log('current zone is hand');
+          }
+          else if(this.currentZone.constructor.name === 'Battlefield'){
+            //console.log('current zone is Battlefield');
+            let graveyard = this.gameZones.find((zone)=>{return zone.constructor.name==='Graveyard'});
+            console.log('This.current zone is: ', this.currentZone);
+            this.currentZone.removeCard(this.key);
+            this.currentZone.displayArray();
+            if(graveyard){
+              graveyard.addCard(this);
+              graveyard.displayArray();
+            }
+          }
+        }
+      }
+    })
 
     function handleDragStart(this: HTMLElement, e: DragEvent) {
+      console.log('drag starts');
       let eventTarget = e.target as HTMLElement;
-      console.log(eventTarget);
+      console.log('eventTarget is: ', eventTarget);
       let dataTransfer = e.dataTransfer as DataTransfer;
       dataTransfer.effectAllowed = "move";
       dataTransfer.setData(
@@ -118,7 +192,6 @@ export class Card {
     }
     function handleDragEnter(e: DragEvent) {
       let dataTransfer = e.dataTransfer as DataTransfer;
-      console.log('dragEnter');
       let target = e.target as HTMLElement;
       if(target.id==='card-container'){
         let nextSibling = target.nextSibling as HTMLElement;
@@ -126,29 +199,19 @@ export class Card {
         if(nextSibling && prevSibling){
             nextSibling.style.transform='translateY(0px)';
             prevSibling.style.transform='translateY(0px)';
-            target.style.transform='translateY(20px)';
+            target.style.transform='translateY(10px)';
         }else if(nextSibling){
             nextSibling.style.transform='translateY(0px)';
-            target.style.transform='translateY(20px)';
+            target.style.transform='translateY(10px)';
         }else if(prevSibling){
             prevSibling.style.transform='translateY(0px)';
-            target.style.transform='translateY(20px)';
+            target.style.transform='translateY(10px)';
         }else{
-          target.style.transform='translateY(20px)';
+          target.style.transform='translateY(10px)';
         }
       }
     }
-    function handleDrop(this: HTMLElement, e: DragEvent) {
-      e.preventDefault();
-      let dataTransfer = e.dataTransfer as DataTransfer;
-      console.log(dataTransfer.getData("text/plain"));
-      let draggedElement = document.querySelector(
-        `[key="${dataTransfer.getData("text/plain")}"]`
-      ) as HTMLElement;
-      let temp = draggedElement.innerHTML;
-      draggedElement.innerHTML = this.innerHTML;
-      this.innerHTML = temp;
-    }
+    
     function handleDragEnd(e: DragEvent){
       let cardsDOM = document.querySelectorAll('#card-container');
       cardsDOM.forEach((card: any)=>{

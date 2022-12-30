@@ -80,7 +80,7 @@ function fillStudentProfileDOM(data: any) {
   statusInput.innerText = data.status;
   }
 
-  function returnStudentProfile(): any{
+  function returnStudentProfileFromPg(): any{
     let idInput: HTMLSpanElement = document.getElementById(
       "id-input"
     ) as HTMLSpanElement;
@@ -184,6 +184,6 @@ function popUpMessage(msg: any, parent: any, msgType: string): void{
     } 
 }
 
-export { createStudentCard, fillStudentProfileDOM, extractDOMtoObject, returnStudentProfile, popUpMessage };
+export { createStudentCard, fillStudentProfileDOM, extractDOMtoObject, returnStudentProfileFromPg, popUpMessage };
 
 //tsc --module es6 ./public/modules/DOM.ts

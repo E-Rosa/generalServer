@@ -1,6 +1,9 @@
-import { getNotesByDate } from "../../modules/fetch.js";
-import { NotesObj } from "../Note/Note.js";
-export let SearchBarObj = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SearchBarObj = void 0;
+const fetch_js_1 = require("../../modules/fetch.js");
+const Note_js_1 = require("../Note/Note.js");
+exports.SearchBarObj = {
     displayDateBar: (parent, notesContainer) => {
         let searchBarInput = document.createElement('input');
         searchBarInput.placeholder = 'YYYY-MM-DD';
@@ -11,7 +14,7 @@ export let SearchBarObj = {
         function searchByDateWrap(e) {
             if (e.key == 'Enter') {
                 e.preventDefault();
-                getNotesByDate(searchBarInput.value)
+                (0, fetch_js_1.getNotesByDate)(searchBarInput.value)
                     .then((res) => { return res.json(); })
                     .then((notes) => {
                     while (notesContainer.firstChild) {
@@ -19,7 +22,7 @@ export let SearchBarObj = {
                         notesContainer.removeChild(lastChild);
                     }
                     ;
-                    NotesObj.createNotes(notesContainer, notes);
+                    Note_js_1.NotesObj.createNotes(notesContainer, notes);
                 });
             }
         }

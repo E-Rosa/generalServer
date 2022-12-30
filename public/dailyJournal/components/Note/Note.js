@@ -1,8 +1,11 @@
-import { toggleEditable } from '../../modules/DOM.js';
-import { toNotePage, toIndexPage } from '../../modules/href.js';
-import { deleteNoteById, putNoteById } from '../../modules/fetch.js';
-import { saveId } from '../../modules/sessionStorage.js';
-import { popUpObj } from '../PopUp/PopUp.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NotesObj = void 0;
+const DOM_js_1 = require("../../modules/DOM.js");
+const href_js_1 = require("../../modules/href.js");
+const fetch_js_1 = require("../../modules/fetch.js");
+const sessionStorage_js_1 = require("../../modules/sessionStorage.js");
+const PopUp_js_1 = require("../PopUp/PopUp.js");
 var NotesObj = {
     title: '',
     text: '',
@@ -61,22 +64,22 @@ var NotesObj = {
             }
             else {
                 noteTitle.addEventListener('click', saveIdWrap);
-                noteTitle.addEventListener('click', toNotePage);
+                noteTitle.addEventListener('click', href_js_1.toNotePage);
             }
             editButton.addEventListener('click', toggleEditableWrap);
             deleteButton.addEventListener('click', deleteNoteWrap);
             function deleteNoteWrap() {
-                popUpObj.display('Are you sure you want to delete this note?', () => {
+                PopUp_js_1.popUpObj.display('Are you sure you want to delete this note?', () => {
                     noteContainer.remove();
-                    deleteNoteById(note.note_id);
-                    toIndexPage();
+                    (0, fetch_js_1.deleteNoteById)(note.note_id);
+                    (0, href_js_1.toIndexPage)();
                 });
             }
             function toggleEditableWrap() {
-                toggleEditable([noteTitle, noteText, tagsElement]);
+                (0, DOM_js_1.toggleEditable)([noteTitle, noteText, tagsElement]);
             }
             function saveIdWrap() {
-                saveId(note.note_id);
+                (0, sessionStorage_js_1.saveId)(note.note_id);
             }
             function updateNoteState(e) {
                 if (e.key === 'Enter') {
@@ -87,7 +90,7 @@ var NotesObj = {
                     notes.push(newNote);
                     console.log('updateNoteState');
                     console.log(NotesObj.id, newNote);
-                    putNoteById(NotesObj.id, newNote);
+                    (0, fetch_js_1.putNoteById)(NotesObj.id, newNote);
                     NotesObj.createNotes(parent, notes);
                     //location.reload();
                 }
@@ -95,4 +98,4 @@ var NotesObj = {
         });
     }
 };
-export { NotesObj };
+exports.NotesObj = NotesObj;

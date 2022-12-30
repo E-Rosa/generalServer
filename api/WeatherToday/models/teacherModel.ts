@@ -12,7 +12,7 @@ class TeacherProfile {
   }
 }
 
-function createTeacherProfile(data: any): any {
+function returnTeacherProfileFromPg(data: any): any {
   let a: object[] = [];
   if (data.rows[0] != undefined) {
     for (let i = 0; i < data.rows.length; i++) {
@@ -29,6 +29,6 @@ function createTeacherProfile(data: any): any {
   }
 }
 
-export { createTeacherProfile, TeacherProfile };
+export { returnTeacherProfileFromPg, TeacherProfile };
 
 //tsc --module commonjs ./api/models/teacherModel.ts

@@ -1,5 +1,5 @@
 import { getStudent } from "../modules/fetch.js";
-import { createStudentCard } from "../modules/DOM.js";
+import { StudentCard } from "../models/studentCard.js";
 
 let submitBtn: HTMLButtonElement = document.getElementById(
   "search-button"
@@ -10,29 +10,34 @@ let nameInput: HTMLInputElement = document.getElementById(
 let cardsContainer: HTMLElement = document.getElementById(
   "student-cards-list"
 ) as HTMLElement;
+let form: HTMLFormElement = document.querySelector("form") as HTMLFormElement;
 
-submitBtn?.addEventListener("click", getStudentByName);
-
-function getStudentByName() {
-  console.log(getStudent(nameInput?.value));
-  getStudent(nameInput?.value)
+submitBtn.addEventListener("click", () => {
+  getStudent(nameInput.value)
     .then((data: any) => {
       return data.json();
     })
-    .then((data: any) => {
+    .then((cards: any) => {
       cardsContainer.innerHTML = "";
-      for (let i = 0; i < data.length; i++) {
-        let name = data[i].name;
-        let status = data[i].status;
-        let id = data[i].id;
-        console.log(data[i]);
-        createStudentCard(name, status, id, cardsContainer);
+      for (let i = 0; i < cards.length; i++) {
+        let studentCard = new StudentCard(
+          cards[i].name,
+          cards[i].status,
+          cards[i].id
+        );
+        studentCard.display(cardsContainer);
       }
     })
     .catch((err: any) => {
       console.log(err);
     });
-}
+});
+nameInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    submitBtn.click();
+  }
+});
 
 export {};
 

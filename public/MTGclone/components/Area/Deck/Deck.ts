@@ -50,17 +50,12 @@ export class Deck extends Area{
 	}
     displayDeckPile(parent:HTMLElement, handContainer: HTMLElement, handObj: Hand){
         this.container.className='deck-pile-container';
-        let cardsCount = this.cardsArray.length;
-        this.container.textContent=cardsCount.toString();
         parent.appendChild(this.container);
 
         this.container.addEventListener('click', ()=>{
-            this.cardsArray[0].display(handContainer);
             handObj.addCard(this.cardsArray[0]);
+            handObj.displayArray();
             this.removeCard(this.cardsArray[0].key);
-            this.container.textContent=cardsCount.toString();
-            console.log('Deck cards are: ', this.cardsArray);
-            console.log('Hand cards are: ', handObj.cardsArray);
         })
     }
     shuffle(){
@@ -80,5 +75,6 @@ export class Deck extends Area{
             return card.key != key;
         });
         this.container.textContent=this.cardsArray.length.toString();
+        console.log('removed cards from: ', this, '\nThe new array is: ', this.cardsArray);
     }
 }

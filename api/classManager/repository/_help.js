@@ -1,0 +1,3 @@
+/*
+    Queries the database for data. Is called by the controller.
+*/

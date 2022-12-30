@@ -1,4 +1,7 @@
-export class RandomBookGenerator {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RandomBookGenerator = void 0;
+class RandomBookGenerator {
     constructor(booksArray) {
         this.booksArray = booksArray;
     }
@@ -24,3 +27,4 @@ export class RandomBookGenerator {
         RBGrootContainer.appendChild(RBGSubmitButton);
     }
 }
+exports.RandomBookGenerator = RandomBookGenerator;

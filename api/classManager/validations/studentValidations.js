@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateStudentProfileAlterable = void 0;
+exports.validateStudentProfileModelAlterable = void 0;
 const { getTeacherById } = require("../repository/teacherRepo.js");
 const { getStudentById } = require("../repository/teacherRepo.js");
-function validateStudentProfileAlterable(profile) {
+function validateStudentProfileModelAlterable(profile) {
     if (getTeacherById(profile.teacher_id).then((data) => {
         if (data.rows) {
             if (data.rows.lenght > 0) {
@@ -28,5 +28,5 @@ function validateStudentProfileAlterable(profile) {
         return false;
     }
 }
-exports.validateStudentProfileAlterable = validateStudentProfileAlterable;
+exports.validateStudentProfileModelAlterable = validateStudentProfileModelAlterable;
 //tsc --module commonjs ./api/validations/studentValidations.ts

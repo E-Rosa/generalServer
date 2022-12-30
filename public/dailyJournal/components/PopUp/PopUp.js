@@ -1,4 +1,7 @@
-export let popUpObj = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.popUpObj = void 0;
+exports.popUpObj = {
     msg: '',
     color: '',
     display: (msg, func) => {

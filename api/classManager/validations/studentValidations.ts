@@ -1,7 +1,7 @@
 const { getTeacherById } = require("../repository/teacherRepo.js");
 const { getStudentById } = require("../repository/teacherRepo.js");
 
-function validateStudentProfileAlterable(profile: any): boolean {
+function validateStudentProfileModelAlterable(profile: any): boolean {
   if (
     getTeacherById(profile.teacher_id).then((data: any) => {
       if (data.rows) {
@@ -25,6 +25,6 @@ function validateStudentProfileAlterable(profile: any): boolean {
   }
 }
 
-export { validateStudentProfileAlterable };
+export { validateStudentProfileModelAlterable };
 
 //tsc --module commonjs ./api/validations/studentValidations.ts

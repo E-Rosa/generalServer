@@ -10,7 +10,13 @@
 	cursor:move;
 	animation: .2s ease-in-out slideIn;
 	position: relative;
-	transition: .1s all ease-in-out;
+	transition: .05s all ease-in-out;
+}
+.card-hitbox{
+	position:absolute;
+	z-index:100;
+	height:100%;
+	width:100%;
 }
 @keyframes popIn{
 	from{transform:scale(0)}

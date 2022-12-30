@@ -1,4 +1,7 @@
-export class PageForecast {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageForecast = void 0;
+class PageForecast {
     constructor(weather, temp, location) {
         this.weather = weather;
         this.temp = temp;
@@ -98,3 +101,4 @@ export class PageForecast {
         }
     }
 }
+exports.PageForecast = PageForecast;

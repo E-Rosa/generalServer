@@ -1,27 +1,31 @@
-import { getStudent } from "../modules/fetch.js";
-import { createStudentCard } from "../modules/DOM.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fetch_js_1 = require("../modules/fetch.js");
+const studentCard_js_1 = require("../models/studentCard.js");
 let submitBtn = document.getElementById("search-button");
 let nameInput = document.getElementById("search-bar");
 let cardsContainer = document.getElementById("student-cards-list");
-submitBtn === null || submitBtn === void 0 ? void 0 : submitBtn.addEventListener("click", getStudentByName);
-function getStudentByName() {
-    console.log(getStudent(nameInput === null || nameInput === void 0 ? void 0 : nameInput.value));
-    getStudent(nameInput === null || nameInput === void 0 ? void 0 : nameInput.value)
+let form = document.querySelector("form");
+submitBtn.addEventListener("click", () => {
+    (0, fetch_js_1.getStudent)(nameInput.value)
         .then((data) => {
         return data.json();
     })
-        .then((data) => {
+        .then((cards) => {
         cardsContainer.innerHTML = "";
-        for (let i = 0; i < data.length; i++) {
-            let name = data[i].name;
-            let status = data[i].status;
-            let id = data[i].id;
-            console.log(data[i]);
-            createStudentCard(name, status, id, cardsContainer);
+        for (let i = 0; i < cards.length; i++) {
+            let studentCard = new studentCard_js_1.StudentCard(cards[i].name, cards[i].status, cards[i].id);
+            studentCard.display(cardsContainer);
         }
     })
         .catch((err) => {
         console.log(err);
     });
-}
+});
+nameInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        submitBtn.click();
+    }
+});
 //tsc --module es6 ./public/p-index/index.ts

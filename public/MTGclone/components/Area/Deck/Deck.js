@@ -1,4 +1,7 @@
-import { Area } from '../Area.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Deck = void 0;
+const Area_js_1 = require("../Area.js");
 //create a Deck class that holds an array of Cards plus a Colors property,
 //that's an array of strings
 //Deck also has a method called draw()
@@ -8,7 +11,7 @@ import { Area } from '../Area.js';
 //var temp = last position's value array[i]
 //last position (array[i]) = array[j] (random position)
 //array[j] (random position) = array[i] (last position)
-export class Deck extends Area {
+class Deck extends Area_js_1.Area {
     constructor(cardsArray) {
         super(cardsArray);
         this.colors = this.getColors();
@@ -44,16 +47,11 @@ export class Deck extends Area {
     }
     displayDeckPile(parent, handContainer, handObj) {
         this.container.className = 'deck-pile-container';
-        let cardsCount = this.cardsArray.length;
-        this.container.textContent = cardsCount.toString();
         parent.appendChild(this.container);
         this.container.addEventListener('click', () => {
-            this.cardsArray[0].display(handContainer);
             handObj.addCard(this.cardsArray[0]);
+            handObj.displayArray();
             this.removeCard(this.cardsArray[0].key);
-            this.container.textContent = cardsCount.toString();
-            console.log('Deck cards are: ', this.cardsArray);
-            console.log('Hand cards are: ', handObj.cardsArray);
         });
     }
     shuffle() {
@@ -73,5 +71,7 @@ export class Deck extends Area {
             return card.key != key;
         });
         this.container.textContent = this.cardsArray.length.toString();
+        console.log('removed cards from: ', this, '\nThe new array is: ', this.cardsArray);
     }
 }
+exports.Deck = Deck;

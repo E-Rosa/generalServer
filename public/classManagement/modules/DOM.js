@@ -1,4 +1,7 @@
-import { toStudent } from "./href.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.popUpMessage = exports.returnStudentProfile = exports.extractDOMtoObject = exports.fillStudentProfileDOM = exports.createStudentCard = void 0;
+const href_js_1 = require("./href.js");
 function createStudentCard(name, status, id, parent) {
     let container = document.createElement("section");
     let student_name = document.createElement("span");
@@ -12,7 +15,7 @@ function createStudentCard(name, status, id, parent) {
     student_id.style.fontWeight = "200";
     container.style.fontSize = ".8em";
     container.style.padding = ".6em 1em .6em 1em";
-    container.addEventListener("click", toStudent);
+    container.addEventListener("click", href_js_1.toStudent);
     container.addEventListener("click", saveSession);
     parent.appendChild(container);
     container.appendChild(student_name);
@@ -23,6 +26,7 @@ function createStudentCard(name, status, id, parent) {
         window.sessionStorage.setItem("student_id", id);
     }
 }
+exports.createStudentCard = createStudentCard;
 function fillStudentProfileDOM(data) {
     let idInput = document.getElementById("id-input");
     let nameInput = document.getElementById("name-input");
@@ -45,6 +49,7 @@ function fillStudentProfileDOM(data) {
     teacherNameInput.innerText = data.teacher_name;
     statusInput.innerText = data.status;
 }
+exports.fillStudentProfileDOM = fillStudentProfileDOM;
 function returnStudentProfile() {
     let idInput = document.getElementById("id-input");
     let nameInput = document.getElementById("name-input");
@@ -69,6 +74,7 @@ function returnStudentProfile() {
         id: idInput.textContent
     });
 }
+exports.returnStudentProfile = returnStudentProfile;
 function extractDOMtoObject(element, object, inputType, propertyName) {
     if (inputType === 'input') {
         return Object.assign(Object.assign({}, object), { [propertyName]: element.value });
@@ -77,6 +83,7 @@ function extractDOMtoObject(element, object, inputType, propertyName) {
         return Object.assign(Object.assign({}, object), { [propertyName]: element.textContext });
     }
 }
+exports.extractDOMtoObject = extractDOMtoObject;
 function popUpMessage(msg, parent, msgType) {
     //create elements
     let container = document.createElement('div');
@@ -109,5 +116,5 @@ function popUpMessage(msg, parent, msgType) {
         container.remove();
     }
 }
-export { createStudentCard, fillStudentProfileDOM, extractDOMtoObject, returnStudentProfile, popUpMessage };
+exports.popUpMessage = popUpMessage;
 //tsc --module es6 ./public/modules/DOM.ts

@@ -1,4 +1,7 @@
-export class Book {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Book = void 0;
+class Book {
     constructor(bookTitle, bookDescription, bookPrice, bookImg) {
         this.bookTitle = bookTitle;
         this.bookDescription = bookDescription;
@@ -31,3 +34,4 @@ export class Book {
         RBGverticalContainer.appendChild(RBGseeMoreButton);
     }
 }
+exports.Book = Book;

@@ -1,0 +1,3 @@
+#Insert new class
+INSERT INTO classes(class_id, class_teacher_id, class_student_id, class_title, class_description, class_date, class_duration, class_status, class_grade) VALUES (uuid_generate_v4(), '012b98fa-f34d-4d21-9c35-153f2ac57cd1', '432fcbe2-617f-4aac-9e86-f0466ae689b1', 'Class title', 'Class description', '2000-08-20', '1h', 'done', '10');
+INSERT INTO classes(class_id, class_teacher_id, class_student_id, class_title, class_description, class_date, class_duration, class_status, class_grade) VALUES (uuid_generate_v4(), '012b98fa-f34d-4d21-9c35-153f2ac57cd1', '432fcbe2-617f-4aac-9e86-f0466ae689b1', 'Class title', 'Class description', '2000-08-20', '1h', 'pending', '10');

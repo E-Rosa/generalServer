@@ -4,13 +4,15 @@ import {
   toAddStudent,
   toIndex,
 } from "../modules/href.js";
-import {
-  checkStorage,
-  validateStudentProfile,
-} from "../modules/validation.js";
+import { checkStorage, validateStudentProfile } from "../modules/validation.js";
 import { getStudentById, putStudentProfile } from "../modules/fetch.js";
-import { fillStudentProfileDOM, extractDOMtoObject, returnStudentProfile, popUpMessage } from "../modules/DOM.js";
-import {StudentProfile} from '../models/studentProfile.js';
+import {
+  fillStudentProfileDOM,
+  extractDOMtoObject,
+  returnStudentProfileFromPg,
+  popUpMessage,
+} from "../modules/DOM.js";
+import { StudentProfile } from "../models/studentProfile.js";
 
 let classesBtn: HTMLButtonElement = document.getElementById(
   "classes-button"
@@ -25,16 +27,11 @@ let submitBtn: HTMLButtonElement = document.getElementById(
   "submit-button"
 ) as HTMLButtonElement;
 
-
-
-
-
-let studentProfile: any = {};
+let studentProfile: any;
 
 addStudentBtn.addEventListener("click", toAddStudent);
 classesBtn.addEventListener("click", toClasses);
 paymentsBtn.addEventListener("click", toPayments);
-submitBtn.addEventListener("click", updateStudentProfile);
 
 function getStudentProfile() {
   if (checkStorage("student_id")) {
@@ -44,9 +41,22 @@ function getStudentProfile() {
         return data.json();
       })
       .then((data: any) => {
-        studentProfile = data[0];
-        console.log(studentProfile);
-        fillStudentProfileDOM(studentProfile);
+        //create new studentProfile Object with data.
+        let studentData: any = data[0];
+        studentProfile = new StudentProfile(
+          studentData.id,
+          studentData.name,
+          studentData.birthday,
+          studentData.city,
+          studentData.level,
+          studentData.subscription,
+          studentData.frequency,
+          studentData.description,
+          studentData.status,
+          studentData.teacher_name
+        );
+        studentProfile.display(document.body);
+        //fillStudentProfileDOM(studentProfile);
       });
   } else {
     toIndex();
@@ -54,16 +64,7 @@ function getStudentProfile() {
 }
 getStudentProfile();
 
-function updateStudentProfile(): any {
-  let student = returnStudentProfile();
-  console.log(student);
- if (validateStudentProfile(student)) {
-    putStudentProfile(student.id, student);
-    popUpMessage('Success!', document.body, 'success');
-  } else {
-    popUpMessage('Not sent. City must have 50 characters or less. Name must have 150 characters or less.', document.body, 'error');
-  }
-}
+
 
 export {};
 

@@ -1,4 +1,5 @@
 import {Card} from "../components/Card/cardModel.js";
+import {None} from "../components/Area/None/None.js";
 let marshRabbit = new Card(
     "Marsh Rabbit",
     "Creature",
@@ -8,7 +9,9 @@ let marshRabbit = new Card(
     "",
     "Alpha",
     "",
-    ["C", "C", "B"]
+    ["C", "C", "B"],
+    null,
+    null
   );
   
 let bolt = new Card(
@@ -20,7 +23,9 @@ let bolt = new Card(
     '',
     'Alpha',
     '',
-    ['R', 'G', 'G', 'C', 'C', 'C  ']
+    ['R', 'G', 'G', 'C', 'C', 'C  '],
+    null,
+    null
   );
   
   let grizzlyBear = new Card(
@@ -32,7 +37,9 @@ let bolt = new Card(
     '',
     'Alpha',
     '',
-    ['C','C','G', 'R']
+    ['C','C','G', 'R'],
+    null,
+    null
   );
   let pitlord = new Card(
     "Pitlord",
@@ -43,7 +50,9 @@ let bolt = new Card(
     '',
     'Alpha',
     '',
-    ['C','C','B', 'B', 'B']
+    ['C','C','B', 'B', 'B'],
+    null,
+    null
   );
 
 export{bolt, grizzlyBear, pitlord, marshRabbit}

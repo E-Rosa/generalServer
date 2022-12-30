@@ -1,10 +1,15 @@
-export function getAllNotes() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getNotesByDate = exports.postNote = exports.deleteNoteById = exports.putNoteById = exports.getNoteById = exports.getAllNotes = void 0;
+function getAllNotes() {
     return fetch("http://localhost:5000/api/dailyJournal/notes");
 }
-export function getNoteById(id) {
+exports.getAllNotes = getAllNotes;
+function getNoteById(id) {
     return fetch(`http://localhost:5000/api/dailyJournal/notes/${id}`);
 }
-export function putNoteById(id, note) {
+exports.getNoteById = getNoteById;
+function putNoteById(id, note) {
     return fetch(`http://localhost:5000/api/dailyJournal/notes/${id}`, {
         method: "PUT",
         headers: {
@@ -13,12 +18,14 @@ export function putNoteById(id, note) {
         body: JSON.stringify(note),
     });
 }
-export function deleteNoteById(id) {
+exports.putNoteById = putNoteById;
+function deleteNoteById(id) {
     return fetch(`http://localhost:5000/api/dailyJournal/notes/${id}`, {
         method: "DELETE",
     });
 }
-export function postNote(note) {
+exports.deleteNoteById = deleteNoteById;
+function postNote(note) {
     return fetch(`http://localhost:5000/api/dailyJournal/notes`, {
         method: "POST",
         headers: {
@@ -27,6 +34,8 @@ export function postNote(note) {
         body: JSON.stringify(note),
     });
 }
-export function getNotesByDate(date) {
+exports.postNote = postNote;
+function getNotesByDate(date) {
     return fetch(`http://localhost:5000/api/dailyJournal/notes/date/${date}`);
 }
+exports.getNotesByDate = getNotesByDate;

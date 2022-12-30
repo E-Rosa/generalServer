@@ -1,0 +1,16 @@
+[
+    {
+      "id": "674ffc50-2f89-4c01-b065-0bec74c63886",
+      "teacher_id": "012b98fa-f34d-4d21-9c35-153f2ac57cd1",
+      "student_id": "b2c6a31f-6781-4036-869f-ee96540fd20a",
+      "date": "2022-12-29T17:26:32.968Z",
+      "value": "250",
+      "status": "paid",
+      "frontEnd": {
+        "teacher_name": "Elias Rosa",
+        "student_name": "Test Student",
+        "dateString": "2022-12-29"
+      }
+      
+    }
+  ]

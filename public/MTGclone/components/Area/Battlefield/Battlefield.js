@@ -1,24 +1,28 @@
-import { Area } from '../Area.js';
-export class Battlefield extends Area {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Battlefield = void 0;
+const Area_js_1 = require("../Area.js");
+const FrontRow_js_1 = require("./FrontRow/FrontRow.js");
+class Battlefield extends Area_js_1.Area {
     constructor(cardsArray) {
         super(cardsArray);
+        this.container = document.createElement("section");
+        this.frontRow = new FrontRow_js_1.FrontRow([]);
     }
     display(parent, areas) {
         //Creates element, attach className and append to parent.
-        this.container.className = 'battlefield';
+        this.container.className = "battlefield";
         parent.appendChild(this.container);
-        let frontRow = document.createElement('section');
-        frontRow.className = 'frontRow';
-        this.container.appendChild(frontRow);
-        let creaturefield = document.createElement('section');
-        creaturefield.className = 'creaturefield';
-        frontRow.appendChild(creaturefield);
-        let artifactfield = document.createElement('section');
-        artifactfield.className = 'artifactfield';
-        frontRow.appendChild(artifactfield);
-        let landfield = document.createElement('section');
-        landfield.className = 'landfield';
+        this.frontRow.container.className = "frontRow";
+        this.container.appendChild(this.frontRow.container);
+        this.frontRow.creatureField.container.className = "creaturefield";
+        this.frontRow.container.appendChild(this.frontRow.creatureField.container);
+        this.frontRow.artifactField.container.className = "artifactfield";
+        this.frontRow.container.appendChild(this.frontRow.artifactField.container);
+        let landfield = document.createElement("section");
+        landfield.className = "landfield";
         this.container.appendChild(landfield);
+        console.log("created and appended: ", this.container, this.frontRow.container, this.frontRow.creatureField.container, this.frontRow.artifactField.container, landfield);
         //Add listeners for 'drag' interactions
         this.container.addEventListener("dragover", handleDragOver);
         this.container.addEventListener("dragenter", handleDragEnter);
@@ -30,26 +34,28 @@ export class Battlefield extends Area {
             let target = e.target;
             //get the draggedElement's key
             let key = dataTransfer.getData("text/plain");
-            //get the draggedElement's DOM element
-            let draggedElement = document.querySelector(`[key="${key}"]`);
-            //If drop something on the frontRow element
-            if (target.className === 'frontRow') {
-                //check all areas 
-                areas.forEach(area => {
+            console.log("drop event target is: ", target);
+            //If drop target on any part of the battlefield
+            if (target.className === "battlefield" || target.className === 'frontRow' || target.className === 'creaturefield' || target.className === 'artifactfield' || target.className === 'landfield') {
+                //check all areas
+                areas.forEach((area) => {
                     //find the card that matches the key
-                    let card = area.cardsArray.find(card => {
+                    let card = area.cardsArray.find((card) => {
                         return card.key === key;
                     });
+                    console.log("target card is: ", card);
+                    //if the card exists
                     if (card != undefined) {
-                        //add the card to this array, and remove the card from the source area's array
-                        console.log('The area is: ', area);
-                        this.addCard(card);
-                        area.removeCard(card.key);
-                        area.displayArray();
+                        //check for it's type
+                        if (card.cardType === "Creature") {
+                            //add the card to this array, and remove the card from the source area's array
+                            this.frontRow.creatureField.addCard(card);
+                            this.frontRow.creatureField.displayArray();
+                            area.removeCard(card.key);
+                            area.displayArray();
+                        }
                     }
                 });
-                //append the element to frontRow
-                this.displayArray();
             }
         });
         function handleDragOver(e) {
@@ -58,14 +64,26 @@ export class Battlefield extends Area {
         function handleDragEnter(e) {
             let dataTransfer = e.dataTransfer;
             let target = e.target;
-            if (target.className === 'battlefield') {
+            if (target.className === "battlefield") {
             }
         }
         function handleDragEnd(e) {
-            let cardsDOM = document.querySelectorAll('#card-container');
+            let cardsDOM = document.querySelectorAll("#card-container");
             cardsDOM.forEach((card) => {
-                card.style.transform = 'translateY(0px)';
+                card.style.transform = "translateY(0px)";
             });
         }
     }
+    displayArray() {
+        while (this.container.lastChild) {
+            if (this.container.firstChild) {
+                this.container.removeChild(this.container.firstChild);
+            }
+        }
+        this.cardsArray.forEach((card) => {
+            card.display(this.container);
+        });
+        console.log("removed all children of: ", this.container, "\nDisplayed all cards from: ", this.cardsArray, "\ninto: ", this.container);
+    }
 }
+exports.Battlefield = Battlefield;

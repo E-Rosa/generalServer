@@ -1,4 +1,7 @@
-export function toggleEditable(targetElements) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.toggleEditable = void 0;
+function toggleEditable(targetElements) {
     targetElements.forEach((element) => {
         if (element.isContentEditable) {
             element.contentEditable = 'false';
@@ -10,4 +13,5 @@ export function toggleEditable(targetElements) {
         }
     });
 }
+exports.toggleEditable = toggleEditable;
 ;

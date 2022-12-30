@@ -1,5 +1,8 @@
-import { Area } from "../Area.js";
-export class Hand extends Area {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Hand = void 0;
+const Area_js_1 = require("../Area.js");
+class Hand extends Area_js_1.Area {
     constructor(cardsArray) {
         super(cardsArray);
     }
@@ -9,3 +12,4 @@ export class Hand extends Area {
         parent.appendChild(this.container);
     }
 }
+exports.Hand = Hand;

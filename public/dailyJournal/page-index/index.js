@@ -1,27 +1,29 @@
-import { NotesObj } from "../components/Note/Note.js";
-import { getAllNotes, postNote } from '../modules/fetch.js';
-import { Note } from '../models/noteModel.js';
-import { SearchBarObj } from "../components/SearchBar/SearchBar.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Note_js_1 = require("../components/Note/Note.js");
+const fetch_js_1 = require("../modules/fetch.js");
+const noteModel_js_1 = require("../models/noteModel.js");
+const SearchBar_js_1 = require("../components/SearchBar/SearchBar.js");
 let notesContainerIndex = document.getElementById('notes-container-index');
 let addNoteButton = document.getElementById('addNote-button');
 let utilitiesContainer = document.getElementById('utilities-container');
 addNoteButton === null || addNoteButton === void 0 ? void 0 : addNoteButton.addEventListener('click', addNewNote);
 let notesState = [];
-SearchBarObj.displayDateBar(utilitiesContainer, notesContainerIndex);
+SearchBar_js_1.SearchBarObj.displayDateBar(utilitiesContainer, notesContainerIndex);
 function fetchAndDisplayNotes() {
-    getAllNotes()
+    (0, fetch_js_1.getAllNotes)()
         .then((res) => {
         return res.json();
     })
         .then((notes) => {
         notesState = notes;
-        NotesObj.createNotes(notesContainerIndex, notesState);
+        Note_js_1.NotesObj.createNotes(notesContainerIndex, notesState);
     });
 }
 fetchAndDisplayNotes();
 function addNewNote() {
-    let newNote = new Note('null', 'Insert Title', 'Insert Text', 'null', 'no-tags');
-    postNote(newNote);
+    let newNote = new noteModel_js_1.Note('null', 'Insert Title', 'Insert Text', 'null', 'no-tags');
+    (0, fetch_js_1.postNote)(newNote);
     while (notesContainerIndex.firstChild) {
         let lastChild = notesContainerIndex.lastChild;
         notesContainerIndex.removeChild(lastChild);

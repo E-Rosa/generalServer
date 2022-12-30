@@ -24,7 +24,7 @@ export class Game{
         p1field.className='p1field';
         gamefield.appendChild(p1field);
 
-        this.battlefield.display(p1field, [this.hand, this.graveyard, this.deck]);
+        this.battlefield.display(p1field, [this.hand, this.graveyard, this.deck, this.battlefield.frontRow]);
 
         let handDeckGraveContainer = document.createElement('section');
         handDeckGraveContainer.className='handDeckGraveContainer';
@@ -32,5 +32,6 @@ export class Game{
 
         this.hand.display(handDeckGraveContainer);
         this.deck.displayDeckPile(handDeckGraveContainer, this.hand.container, this.hand);
+        this.graveyard.display(handDeckGraveContainer);
     }
 }

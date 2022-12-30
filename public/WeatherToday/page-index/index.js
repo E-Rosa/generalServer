@@ -1,18 +1,20 @@
-import { fetchGeolocation, fetchWeatherData } from "../modules/fetch.js";
-import { PageForecast } from "../components/PageForecast/PageForecast.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fetch_js_1 = require("../modules/fetch.js");
+const PageForecast_js_1 = require("../components/PageForecast/PageForecast.js");
 let cachedForecastData = {};
 let listCounter = 2;
-fetchGeolocation()
+(0, fetch_js_1.fetchGeolocation)()
     .then((res) => { return res.json(); })
     .then((data) => {
     let location = data.city;
-    fetchWeatherData(data.longitude, data.latitude)
+    (0, fetch_js_1.fetchWeatherData)(data.longitude, data.latitude)
         .then((res) => { return res.json(); })
         .then((data) => {
         cachedForecastData = data;
         console.log(cachedForecastData);
         let pageForecastData = data.dataseries[1];
-        let forecast = new PageForecast(pageForecastData.weather, pageForecastData.temp2m, location);
+        let forecast = new PageForecast_js_1.PageForecast(pageForecastData.weather, pageForecastData.temp2m, location);
         forecast.displayMainForecast(document.body);
         forecast.displayReducedForecast(document.body, cachedForecastData);
     });

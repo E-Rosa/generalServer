@@ -1,6 +1,12 @@
-import { Card } from "../components/Card/cardModel.js";
-let marshRabbit = new Card("Marsh Rabbit", "Creature", ["Rabbit", "Rogue"], 3, 1, "", "Alpha", "", ["C", "C", "B"]);
-let bolt = new Card("Bolt", "Instant", ['', ''], 0, 0, '', 'Alpha', '', ['R', 'G', 'G', 'C', 'C', 'C  ']);
-let grizzlyBear = new Card("Grizzly Bear", "Creature", ['Bear', 'Grey'], 2, 2, '', 'Alpha', '', ['C', 'C', 'G', 'R']);
-let pitlord = new Card("Pitlord", "Creature", ['Demon', ''], 6, 6, '', 'Alpha', '', ['C', 'C', 'B', 'B', 'B']);
-export { bolt, grizzlyBear, pitlord, marshRabbit };
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.marshRabbit = exports.pitlord = exports.grizzlyBear = exports.bolt = void 0;
+const cardModel_js_1 = require("../components/Card/cardModel.js");
+let marshRabbit = new cardModel_js_1.Card("Marsh Rabbit", "Creature", ["Rabbit", "Rogue"], 3, 1, "", "Alpha", "", ["C", "C", "B"], null, null);
+exports.marshRabbit = marshRabbit;
+let bolt = new cardModel_js_1.Card("Bolt", "Instant", ['', ''], 0, 0, '', 'Alpha', '', ['R', 'G', 'G', 'C', 'C', 'C  '], null, null);
+exports.bolt = bolt;
+let grizzlyBear = new cardModel_js_1.Card("Grizzly Bear", "Creature", ['Bear', 'Grey'], 2, 2, '', 'Alpha', '', ['C', 'C', 'G', 'R'], null, null);
+exports.grizzlyBear = grizzlyBear;
+let pitlord = new cardModel_js_1.Card("Pitlord", "Creature", ['Demon', ''], 6, 6, '', 'Alpha', '', ['C', 'C', 'B', 'B', 'B'], null, null);
+exports.pitlord = pitlord;

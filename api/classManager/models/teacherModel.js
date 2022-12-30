@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TeacherProfile = exports.createTeacherProfile = void 0;
+exports.TeacherProfile = exports.returnTeacherProfileFromPg = void 0;
 class TeacherProfile {
-    constructor(name, id, city, level) {
+    constructor(name = '', id = '', city = '', level = '') {
         this.name = name;
         this.id = id;
         this.city = city;
@@ -10,7 +10,7 @@ class TeacherProfile {
     }
 }
 exports.TeacherProfile = TeacherProfile;
-function createTeacherProfile(data) {
+function returnTeacherProfileFromPg(data) {
     let a = [];
     if (data.rows[0] != undefined) {
         for (let i = 0; i < data.rows.length; i++) {
@@ -24,8 +24,8 @@ function createTeacherProfile(data) {
         return a;
     }
     else {
-        return null;
+        return [new TeacherProfile()];
     }
 }
-exports.createTeacherProfile = createTeacherProfile;
+exports.returnTeacherProfileFromPg = returnTeacherProfileFromPg;
 //tsc --module commonjs ./api/models/teacherModel.ts

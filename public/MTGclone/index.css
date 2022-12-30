@@ -3,6 +3,7 @@ body{
 	display:flex;
 	flex-direction: column-reverse;
 	flex-wrap:wrap;
+	margin:0;
 }
 #hand-and-deck-container, #battlefield-and-graveyard-container{
 	display:flex;

@@ -1,0 +1,30 @@
+Task: Change the constructor in the ClassModel class
+to make it so that the date goes in the format of
+a string to the front-end, like YYYY-MO-DA
+
+The date comes from the DB like:
+2000-08-20T03:00:00.000Z
+
+I want the data to go to the front-end like:
+2000-08-20
+
+I want to receive the data from the front-end like:
+2000-08-20
+
+I want to update the data on my database like:
+2000-08-20
+
+The API cycle:
+	To get data:
+		0.The front-end requests the data.
+		1.The controller uses the repository to query the db >
+		2.The controller uses the model to generate instances
+			of a class formatted for the front-end.
+		3.The controller sends the data to the front-end
+
+	To receive data: 
+		0. The front-end sends the data
+		1. The controller uses the model to generate
+			instances of a class formatted for the back-end
+		2.The controller uses the repository to query the db
+		3.The controller sends a status to the front-end.
